@@ -1,0 +1,80 @@
+[{
+  "country": "Austria",
+  "accesion": "01.01.1995",
+  "schengen": "yes",
+  "EP_seats": 18,
+  "population": 8700471,
+  "area_KM": 83855
+}, {
+  "country": "Belgium",
+  "accesion": "25.03.1957",
+  "schengen": "yes",
+  "EP_seats": 21,
+  "population": 11289853,
+  "area_KM": 30528
+}, {
+  "country": "Bulgaria",
+  "accesion": "01.01.2007",
+  "schengen": "no",
+  "EP_seats": 17,
+  "population": 7153784,
+  "area_KM": 110994
+}, {
+  "country": "Croatia",
+  "accesion": "01.07.2013",
+  "schengen": "no",
+  "EP_seats": 11,
+  "population": 4190669,
+  "area_KM": 56594
+}, {
+  "country": "Denmark",
+  "accesion": "01.01.1973",
+  "schengen": "yes",
+  "EP_seats": 13,
+  "population": 5707251,
+  "area_KM": 43075
+}, {
+  "country": "Cyprus",
+  "accesion": "01.05.2004",
+  "schengen": "no",
+  "EP_seats": 6,
+  "population": 848319,
+  "area_KM": 9251
+}, {
+  "country": "Czechia",
+  "accesion": "01.05.2004",
+  "schengen": "yes",
+  "EP_seats": 21,
+  "population": 10553843,
+  "area_KM": 78866
+}, {
+  "country": "Estonia",
+  "accesion": "01.05.2004",
+  "schengen": "yes",
+  "EP_seats": 6,
+  "population": 1315944,
+  "area_KM": 45227
+}, {
+  "country": "France",
+  "accesion": "25.03.1957",
+  "schengen": "yes",
+  "EP_seats": 74,
+  "population": 66661621,
+  "area_KM": 632833
+}, {
+  "country": "Germany",
+  "accesion": "25.03.1957",
+  "schengen": "yes",
+  "EP_seats": 96,
+  "population": 82162000,
+  "area_KM": 357386
+}, {
+  "country": "Poland",
+  "accesion": "01.05.2004",
+  "schengen": "yes",
+  "EP_seats": 51,
+  "population": 37967209,
+  "area_KM": 312685
+}
+
+]

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <style>
+      .cursor{
+        cursor: pointer;
+      }
+    </style>  
+    
+    <script src="./math.js"></script>
+    <script src="./sortingFilters.js"></script>  
+  </head>
+
+  <body>
+    <b>Sortowanie na górnej belce tabel</b><br/>
+    <label for="filters">Filters</label> 
+    <div name="filters">
+      <label for="fArea"></label>
+        <select name="fArea" id="fArea" onchange="filtrArea()">
+          <option selected="selected" value="0">choose area filter</option>
+          <option value="1">less than 50,000 km&sup2;</option>
+          <option value="2">from 50,000 to 300,000 km&sup2;</option>
+          <option value="3">more than 300,000 km&sup2;</option>
+        </select>
+
+        <label for="fEPSeats"></label>
+        <select name="fEPSeats" id="fEPSeats" onchange="filtrEPSeats()">
+          <option selected="selected" value="0">choose EP Seats filter</option>
+          <option value="even">even</option>
+          <option value="odd">odd</option>
+        </select>
+        <label for="shData">Show / hide original data</label>
+        <input type="checkbox" name="shData" id="shData" onclick="filtrShowHide();">
+    </div>
+
+    <table id="countries" class="table-striped table-hover table-sm w-75 m-2">
+      <thead class="table-primary text-center"></thead>
+      <tbody class="text-center"></tbody>
+      <tfoot class="table-warning text-center"></tfoot>
+    </table>
+    Filtered:
+    <table id="countries2" class="table-striped table-hover table-sm w-75 m-2">
+        <thead class="table-primary text-center"></thead>
+        <tbody class="text-center"></tbody>
+        <tfoot class="table-success text-center"></tfoot>
+      </table>
+    <hr/>
+    <script src="./index.js"></script>
+  </body>
+</html>
