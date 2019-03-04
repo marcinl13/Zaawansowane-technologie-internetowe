@@ -20,8 +20,8 @@ var selected = [
 
 
 //---------------sorting---------------
-function sort_area_KM(thisData) {
-  var id = $(thisData).closest('table').prop('id');
+function sort_area_KM(thisData) {   
+  var id = thisData.parentElement.parentElement.id;
   var tmpJson = jsonData;
   var clickCount = 0;
 
@@ -41,7 +41,7 @@ function sort_area_KM(thisData) {
 }
 
 function sort_population(thisData) {
-  var id = $(thisData).closest('table').prop('id');
+  var id = thisData.parentElement.parentElement.id;
   var tmpJson = jsonData;
   var clickCount = 0;
 
@@ -61,7 +61,7 @@ function sort_population(thisData) {
 }
 
 function sort_accesion(thisData) {
-  var id = $(thisData).closest('table').prop('id');
+  var id = thisData.parentElement.parentElement.id;
   var tmpJson = jsonData;
   var clickCount = 0;
 
@@ -92,7 +92,7 @@ function sort_country(thisData) {
   var id = 'countries2';
   var tmpJson = jsonData;
   var clickCount = 0;
-  if (thisData != null) id = $(thisData).closest('table').prop('id');
+  if (thisData != null) id = thisData.parentElement.parentElement.id;
 
   if (id == 'countries2') {
     tmpJson = filtrData;
@@ -110,7 +110,7 @@ function sort_country(thisData) {
 }
 
 function sort_schengen(thisData) {
-  var id = $(thisData).closest('table').prop('id');
+  var id = thisData.parentElement.parentElement.id;
   var tmpJson = jsonData;
   var clickCount = 0;
 
@@ -130,7 +130,7 @@ function sort_schengen(thisData) {
 }
 
 function sort_EP_seats(thisData) {
-  var id = $(thisData).closest('table').prop('id');
+  var id = thisData.parentElement.parentElement.id;
   var tmpJson = jsonData;
   var clickCount = 0;
 
@@ -171,7 +171,7 @@ function filtrArea() {
   }
 
   drawTable(filtrData, "countries2");
-  $("#countries2 tfoot").empty();
+  document.querySelector("#countries2 tfoot").innerHTML = '';  
 
   calc();
 }
@@ -194,7 +194,7 @@ function filtrEPSeats() {
   }
 
   drawTable(filtrData, "countries2");
-  $("#countries2 tfoot").empty();
+  document.querySelector("#countries2 tfoot").innerHTML = '';
 
   calc();
 }

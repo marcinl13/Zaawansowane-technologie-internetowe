@@ -37,9 +37,9 @@ function drawTable(jsonData, id = "countries") {
     tableBody += "</tr>";
   }
 
-  //clear all data
-  $("#" + id + " thead").empty();
-  $("#" + id + " tbody").empty();
+  //clear all data   
+  document.getElementById(id).children[0].innerHTML = ''; //thead
+  document.getElementById(id).children[1].innerHTML = ''; //tbody
 
   //insert all data
   $("#" + id + " thead").append(tableHeads);
@@ -55,9 +55,8 @@ filtrData = jsonData;
 drawTable(jsonData, "countries");
 
 //document ready
-$(function () {
+window.onload = function () {
   sort_country();
   calc(jsonData, "countries");
   calc(filtrData, "countries2");
-});
-
+}
