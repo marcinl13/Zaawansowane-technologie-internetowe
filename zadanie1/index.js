@@ -1,3 +1,5 @@
+//dane zbiorcze oryginal do filtrwanuyych wrzucic
+//pokolorowac row wg sredniej filtrowanej
 function readJSON(file) {
   var result = null;
   $.ajax({
