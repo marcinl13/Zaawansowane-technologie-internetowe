@@ -1,17 +1,58 @@
-function replace(text){ //prepare
-  return text.replace(/(\/\*(.+?)\*\/)/g, '<em>$2</em>')
-              .replace(/([*](.+?)[*])/g, '<p>$2</p>');
+function replace(text) { //prepare
+
+  var tmp = text
+    .replace(/(\/\*(.+?)\*\/)/g, '<b>$2</b>')
+    .replace(/([*](.+?)[*])/g, '<i>$2</i>')
+    .replace(/(_!(.+?)!_)/g, '<u>$2</u>')
+    .replace(/(-!(.+?)!-)/g, '<del>$2</del>')
+    .replace(/(>>(.+?)<<)/g, '<q>$2</q>')
+    .replace(/(\[(.+)\|(.+)\])/g, '<a href="$2">$3</a>');
+
+  if (tmp[0] != '#')
+    tmp = tmp.replace(/(.*)/g, '<p>$1</p>').replace('<p></p>', '')
+  else
+    tmp = tmp.replace(/([#](.*))/g, '<h1>$1</h1>')
+  
+  return tmp;
 }
 
-function checkForErrors(prepared){
+function checkForErrors(prepare) {
+  var replaced = replace(prepare);
+  var tags = replaced.replace(/(<a href="(.+?)">)/g, '<a>').match(/(<(.+?)>)/g);
 
+
+  console.log(tags)
+
+  return replaced;
 }
 
 function parseThis() {
-  var input = document.getElementById('input').value;
+  var inputSplited = document.getElementById('input').value.split("\n");
+  var replaced = '';
 
-  console.log(replace(input));
-  
+  inputSplited.forEach(element => {
+    replaced += checkForErrors(element)
+  });
+
   document.getElementById('output').innerHTML = ''
-  document.getElementById('output').innerHTML = replace(input)
+  document.getElementById('output').innerHTML = replaced;
+}
+
+window.onload = () => {
+
+  var defaultText = [
+    '*i cos tam*',
+    '#naglowek #adfs',
+    '-!przekresl!-',
+    '_!podkresl!_',
+    '/*pogrubione*/',
+    '[adres|tekst]',
+    '>>cudzyslow<<',
+    'zwykly akapit'
+  ];
+
+  document.getElementById('input').value = '';
+  document.getElementById('input').value = defaultText.join('\n');
+
+  parseThis()
 }
