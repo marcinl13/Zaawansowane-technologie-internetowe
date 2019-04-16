@@ -12,18 +12,33 @@ function replace(text) { //prepare
     tmp = tmp.replace(/(.*)/g, '<p>$1</p>').replace('<p></p>', '')
   else
     tmp = tmp.replace(/([#](.*))/g, '<h1>$1</h1>')
-  
+
   return tmp;
 }
 
 function checkForErrors(prepare) {
   var replaced = replace(prepare);
   var tags = replaced.replace(/(<a href="(.+?)">)/g, '<a>').match(/(<(.+?)>)/g);
+  var stack = [];
 
+  tags.forEach(tag => {
+    if (tag[1] == '/') {
+      var replaced = tag.replace(/(\/)/g, '')
+      var last = stack.length - 1
 
-  console.log(tags)
+      if (stack[last] == replaced) {
+        stack = stack.slice(0, -1)
+      }
+      
+    } else {
+      stack.push(tag)
+    }
+  })
 
-  return replaced;
+  if (stack.length > 0)
+    return  '<p class="text-danger">Błąd'+  prepare +'</p>'
+  else
+    return replaced;
 }
 
 function parseThis() {
@@ -48,7 +63,8 @@ window.onload = () => {
     '/*pogrubione*/',
     '[adres|tekst]',
     '>>cudzyslow<<',
-    'zwykly akapit'
+    'zwykly akapit',
+    '* >>cud*zyslow<<',
   ];
 
   document.getElementById('input').value = '';
