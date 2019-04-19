@@ -1,6 +1,7 @@
 var count = 1;
+
+//prepare
 function replace(text) {
-  //prepare
 
   var tmp = text
     .replace(/(\/\*(.+?)\*\/)/g, "<b>$2</b>")
@@ -19,6 +20,7 @@ function replace(text) {
   return tmp;
 }
 
+//error check
 function checkForErrors(prepare) {
   try {
     var stack = [];
@@ -49,6 +51,7 @@ function checkForErrors(prepare) {
   } catch (error) {}
 }
 
+//event on pressed
 function parseThis() {
   var inputSplited = document.getElementById("input").value.split("\n");
   var replaced = "";
