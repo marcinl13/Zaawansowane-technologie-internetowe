@@ -67,15 +67,15 @@ function parseThis() {
 
 window.onload = () => {
   var defaultText = [
-    "*i cos tam*",
-    "#naglowek #adfs",
-    "-!przekresl!-",
-    "_!podkresl!_",
-    "/*pogrubione*/",
-    "[adres|tekst]",
-    ">>cudzyslow<<",
-    "zwykly akapit",
-    "* >>cud*zyslow<<"
+    '*i cos tam*',
+    '#naglowek #adfs',
+    '-!przekresl!-',
+    '_!podkresl!_',
+    '/*pogrubione*/',
+    '[adres|tekst]',
+    '>>cudzyslow<<',
+    'zwykly akapit',
+    '* >>cud*zyslow<<',
   ];
 
   document.getElementById("input").value = "";
