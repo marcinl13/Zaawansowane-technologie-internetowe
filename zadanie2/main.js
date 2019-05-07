@@ -11,11 +11,11 @@ function replace(text) {
     .replace(/(>>(.+?)<<)/g, "<q>$2</q>")
     .replace(/(\[(.+)\|(.+)\])/g, '<a href="$2">$3</a>');
 
-  if (tmp[0] != "#")
+  if (tmp[0] != "#") {
     tmp = tmp.replace(/(.*)/g, "<p>$1</p>").replace("<p></p>", "");
-  else {
-    console.log(count++);
+  } else {
     tmp = tmp.replace(/([#](.*))/g, '<h1 id="' + count + '">$1</h1>');
+    count += 1
   }
   return tmp;
 }
@@ -43,9 +43,11 @@ function checkForErrors(prepare) {
       }
     });
 
-    if (stack.length > 0)
+    if (stack.length > 0) {
       return '<p class="text-danger">Błąd' + prepare + "</p>";
-    else return replaced;
+    } else {
+      return replaced;
+    }
   } catch (error) { }
 }
 
@@ -59,7 +61,7 @@ function parseThis() {
     if (element.length > 0)
       replaced += checkForErrors(element);
     else
-    replaced += '<br/>'
+      replaced += '<br/>'
   });
 
   document.getElementById("output").innerHTML = "";
