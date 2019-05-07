@@ -30,8 +30,6 @@ function checkForErrors(prepare) {
       .replace(/(<h1 id="(.+?)">)/g, "<h1>")
       .match(/(<(.+?)>)/g);
 
-    console.log(tags);
-
     tags.forEach(tag => {
       if (tag[1] == "/") {
         var replaced = tag.replace(/(\/)/g, "");
@@ -48,7 +46,7 @@ function checkForErrors(prepare) {
     if (stack.length > 0)
       return '<p class="text-danger">Błąd' + prepare + "</p>";
     else return replaced;
-  } catch (error) {}
+  } catch (error) { }
 }
 
 //event on pressed
@@ -58,7 +56,10 @@ function parseThis() {
   count = 1;
 
   inputSplited.forEach(element => {
-    replaced += checkForErrors(element);
+    if (element.length > 0)
+      replaced += checkForErrors(element);
+    else
+    replaced += '<br/>'
   });
 
   document.getElementById("output").innerHTML = "";
