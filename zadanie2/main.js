@@ -4,17 +4,17 @@ var count = 1;
 function replace(text) {
 
   var tmp = text
-    .replace(/(\/\*(.+?)\*\/)/g, "<b>$2</b>")
-    .replace(/([*](.+?)[*])/g, "<i>$2</i>")
+    .replace(/(\*\*(.+?)\*\*)/g, "<b>$2</b>")    
     .replace(/(_!(.+?)!_)/g, "<u>$2</u>")
     .replace(/(-!(.+?)!-)/g, "<del>$2</del>")
     .replace(/(>>(.+?)<<)/g, "<q>$2</q>")
+    .replace(/([*](.+?)[*])/g, "<i>$2</i>")
     .replace(/(\[(.+)\|(.+)\])/g, '<a href="$2">$3</a>');
 
   if (tmp[0] != "#") {
     tmp = tmp.replace(/(.*)/g, "<p>$1</p>").replace("<p></p>", "");
   } else {
-    tmp = tmp.replace(/([#](.*))/g, '<h1 id="' + count + '">$1</h1>');
+    tmp = tmp.replace(/((#)(.*))/g, '<h1 id="' + count + '">$3</h1>');
     count += 1
   }
   return tmp;
@@ -29,7 +29,7 @@ function checkForErrors(prepare) {
       .replace(/(<a href="(.+?)">)/g, "<a>")
       .replace(/(<h1 id="(.+?)">)/g, "<h1>")
       .match(/(<(.+?)>)/g);
-
+    
     tags.forEach(tag => {
       if (tag[1] == "/") {
         var replaced = tag.replace(/(\/)/g, "");
@@ -74,7 +74,7 @@ window.onload = () => {
     '#naglowek #adfs',
     '-!przekresl!-',
     '_!podkresl!_',
-    '/*pogrubione*/',
+    '**pogrubione**',
     '[adres|tekst]',
     '>>cudzyslow<<',
     'zwykly akapit',
