@@ -26,6 +26,31 @@ class DoublyLinkedList {
   }
 }
 
+function Graph(v) {
+  this.vertices = v;
+  this.edges = 0;
+  this.adjList = [];
+  for (var i = 0; i < this.vertices; ++i) {
+    this.adjList[i] = [];
+  }
+  this.newEdge = function(v,w) {
+    this.adjList[v].push(w);
+    this.adjList[w].push(v);
+    this.edges++;
+  };
+  this.printGraph = function() {
+    for (var i = 0; i < this.vertices; ++i) {
+       var txt = ""
+       txt += (i + ": ");
+       for (var j = 0; j < this.vertices; ++j) {
+          if (this.adjList[i][j] != undefined)
+            txt+= (this.adjList[i][j] + ' ');
+        }
+        console.log(txt);
+     }
+   };
+ };
+
 class Buffor {
   constructor() {
     this.arrayBuffor = [];
@@ -84,4 +109,13 @@ window.onload = () => {
   var sesialized = '{"class":"DoublyLinkedList","data":[1,2,3]}';
   var c = new Buffor();
   c.deserialize(sesialized);
+
+
+  var myGraph = new Graph(5);
+  myGraph.newEdge(0, 1);
+  myGraph.newEdge(0, 2);
+  myGraph.newEdge(2, 4);
+  myGraph.newEdge(2, 3);
+  myGraph.newEdge(3, 4);
+  myGraph.printGraph()
 };
