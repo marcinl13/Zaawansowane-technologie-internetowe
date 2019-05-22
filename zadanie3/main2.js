@@ -1,4 +1,3 @@
-
 function Queue() {
   this.dataStore = [];
   this.enqueue = function enqueue(element) {
@@ -33,7 +32,6 @@ Tree.prototype.traverseDF = function(callback) {
     }
 
     callback(currentNode);
-
   })(this._root);
 };
 
@@ -77,7 +75,7 @@ Tree.prototype.add = function(data, toData, traversal) {
   }
 };
 
-class Node {
+class NodeDoublyLinkedList {
   constructor(data) {
     this.data = data;
     this.left = null;
@@ -93,7 +91,7 @@ class DoublyLinkedList {
   }
 
   append(_item) {
-    var node = new Node(_item);
+    var node = new NodeDoublyLinkedList(_item);
     if (!this.left) {
       this.left = node;
       this.right = node;
@@ -105,3 +103,59 @@ class DoublyLinkedList {
   }
 }
 
+
+function NodeLinkedList(_data) {
+  this.data = _data;
+  this.next = null;
+}
+
+function LinkedList() {
+  this._length = null;
+  this.head = null;
+}
+
+LinkedList.prototype.append = function(_item) {
+  var node = new NodeLinkedList(_item);
+
+  if (!this.head) {
+    this.head = node;
+    this._length += 1;
+    return node;
+  }
+
+  while (this.head.next) {
+    this.head = this.head.next;
+  }
+
+  this.head.next = node;
+  this._length += 1;
+
+  return node;
+};
+
+LinkedList.prototype.getSize = function() {
+  return this._length;
+};
+
+LinkedList.prototype.removeHead = function() {
+  if (!this.head) {
+    return;
+  }
+
+  this.head = this.head.next;
+  this._length -= 1;
+  return this.head;
+};
+
+LinkedList.prototype.remove = function(_item) {
+  var currentNode = this.head;
+  while (currentNode.next) {
+    if (currentNode == _item) {
+      var next = currentNode.next;
+      var nNext = next.next;
+      next = null;
+      currentNode.next = nNext;
+      return this;
+    }
+  }
+};
