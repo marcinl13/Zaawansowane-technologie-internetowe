@@ -27,7 +27,7 @@ class DoublyLinkedList {
   }
 }*/
 
-
+ 
 function Queue() {
   this.dataStore = [];
   this.enqueue = function enqueue(element) {
