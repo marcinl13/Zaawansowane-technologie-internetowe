@@ -2,27 +2,27 @@
 class NodeDoublyLinkedList {
   constructor(data) {
     this.data = data;
-    this.left = null;
-    this.right = null;
+    this.next = null;
+    this.prev = null;
     this.args = [];
   }
 }
 
 class DoublyLinkedList {
   constructor() {
-    this.left = null;
-    this.right = null;
+    this.next = null;
+    this.prev = null;
   }
 
   append(_item) {
     var node = new NodeDoublyLinkedList(_item);
-    if (!this.left) {
-      this.left = node;
-      this.right = node;
+    if (!this.next) {
+      this.next = node;
+      this.prev = node;
     } else {
-      node.right = this.right;
-      this.right.left = node;
-      this.right = node;
+      node.prev = this.prev;
+      this.prev.next = node;
+      this.prev = node;
     }
   }
 }*/
@@ -171,22 +171,22 @@ function NodeDoublyLinkedList(_data) {
 }
 
 function DoublyLinkedList() {
-  this.left = null;
-  this.right = null;
+  this.next = null;
+  this.prev = null; //prev
   this._length = 0;
 }
 
 DoublyLinkedList.prototype.append = function (_item) {
   var node = new NodeDoublyLinkedList(_item)
 
-  if (!this.left) {
-    this.left = node;
-    this.right = node;
+  if (!this.next) {
+    this.next = node;
+    this.prev = node;
   }
   else {
-    node.right = this.right;
-    this.right.left = node;
-    this.right = node;
+    node.prev = this.prev;
+    this.prev.next = node;
+    this.prev = node;
   }
 
   this._length += 1;
