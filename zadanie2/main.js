@@ -8,7 +8,7 @@ function replace(text) {
     .replace(/(_!(.+?)!_)/g, "<u>$2</u>")
     .replace(/(-!(.+?)!-)/g, "<del>$2</del>")
     .replace(/(>>(.+?)<<)/g, "<q>$2</q>")
-    .replace(/([*](.+?)[*])/g, "<i>$2</i>")
+    .replace(/(\*(.+?)\*)/g, "<i>$2</i>")
     .replace(/(\[(.+)\|(.+)\])/g, '<a href="$2">$3</a>');
 
   if (tmp[0] != "#") {

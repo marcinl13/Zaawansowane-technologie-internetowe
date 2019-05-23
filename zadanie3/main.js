@@ -5,7 +5,7 @@ class Factory {
     this.typeName = "";
   }
 
-  addType(_type) {
+  appendType(_type) {
     if (_type == "DoublyLinkedList") {
       this.type = new DoublyLinkedList();
       this.typeName = "DoublyLinkedList";
@@ -17,14 +17,14 @@ class Factory {
 
     if (_type == "Tree") {
       // var tree = new Tree(0);
-      // tree.add("VP of Happiness", 0, tree.traverseBF);
+      // tree.append("VP of Happiness", 0, tree.traverseBF);
 
       this.typeName = "Tree";
       this.type = new Tree(0);
     }
   }
 
-  add(_item, _item2 = null) {
+  append(_item, _item2 = null) {
     if (this.typeName == "DoublyLinkedList") {
       this.type.append(_item);
       this.arrayBuffor.push(_item);
@@ -39,7 +39,7 @@ class Factory {
 
     if (this.typeName == "Tree") {
       var tree = this.type;
-      tree.add(_item, _item2, tree.traverseDF);
+      tree.append(_item, _item2, tree.traverseDF);
       this.arrayBuffor.push({ _item, _item2 });
       this.type = tree;
     }
@@ -69,26 +69,26 @@ class Factory {
     var b = new Factory();
 
     if (parsed.class == "DoublyLinkedList") {
-      b.addType(parsed.class);
+      b.appendType(parsed.class);
 
       parsed.data.forEach(element => {
-        b.add(element);
+        b.append(element);
       });
     }
 
     if (parsed.class == "LinkedList") {
-      b.addType(parsed.class);
+      b.appendType(parsed.class);
 
       parsed.data.forEach(element => {
-        b.add(element);
+        b.append(element);
       });
     }
 
     if (parsed.class == "Tree") {
-      b.addType(parsed.class);
+      b.appendType(parsed.class);
 
       parsed.data.forEach(element => {
-        b.add(element._item, element._item2);
+        b.append(element._item, element._item2);
       });
     }
 
@@ -104,48 +104,56 @@ class Factory {
 
 window.onload = () => {
   var factory = new Factory();
-  factory.addType("DoublyLinkedList");
-  factory.add(1);
-  factory.add(2);
-  factory.add(3);
+  factory.appendType("DoublyLinkedList");
+  factory.append(1);
+  factory.append(2);
+  factory.append(3);
   factory.show("\r\n-----------------show DoublyLinkedList: ");
   var serialized = factory.serialize();
 
   deserialization = new Factory();
   deserialization.deserialize(serialized);
   deserialization.show("\r\ndeserialization:");
-  deserialization.add(15);
+  deserialization.append(15);
   deserialization.show("\r\nmodify deserialization:");
 
 
   var factory = new Factory();
-  factory.addType("Tree");
-  factory.add("12", 0);
-  factory.add("VP of Finance", 0);
-  factory.add("VP of Sadness", 0);
-  factory.add("Director of Puppies", "12");
-  factory.add("Manager of Puppies", "Director of Puppies");
+  factory.appendType("Tree");
+  factory.append("12", 0);
+  factory.append("VP of Finance", 0);
+  factory.append("VP of Sadness", 0);
+  factory.append("Director of Puppies", "12");
+  factory.append("Manager of Puppies", "Director of Puppies");
   factory.show("\r\n-----------------show Tree");
   var serialized = factory.serialize();
 
   deserialization = new Factory();
   deserialization.deserialize(serialized);
   deserialization.show("\r\ndeserialization: ");
-  deserialization.add(1, 0);
+  deserialization.append(1, 0);
   deserialization.show("\r\nmodify deserialization:");
 
  
   var factory = new Factory();
-  factory.addType("LinkedList");
-  factory.add(1);
-  factory.add(2);
-  factory.add(3);
+  factory.appendType("LinkedList");
+  factory.append(1);
+  factory.append(2);
+  factory.append(3);
   factory.show("\r\n-----------------show LinkedList: ");
   var serialized = factory.serialize();
 
   deserialization = new Factory();
   deserialization.deserialize(serialized);
   deserialization.show("\r\ndeserialization: ");
-  deserialization.add(6);
+  deserialization.append(6);
   deserialization.show("\r\nmodify deserialization:");
+
+
+  var linked = new DoublyLinkedList()
+  linked.append(1)
+  linked.append(11)
+  linked.append(12)
+  console.log(linked)
+
 };

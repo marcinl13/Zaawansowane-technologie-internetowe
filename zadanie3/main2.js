@@ -1,3 +1,33 @@
+/*
+class NodeDoublyLinkedList {
+  constructor(data) {
+    this.data = data;
+    this.left = null;
+    this.right = null;
+    this.args = [];
+  }
+}
+
+class DoublyLinkedList {
+  constructor() {
+    this.left = null;
+    this.right = null;
+  }
+
+  append(_item) {
+    var node = new NodeDoublyLinkedList(_item);
+    if (!this.left) {
+      this.left = node;
+      this.right = node;
+    } else {
+      node.right = this.right;
+      this.right.left = node;
+      this.right = node;
+    }
+  }
+}*/
+
+
 function Queue() {
   this.dataStore = [];
   this.enqueue = function enqueue(element) {
@@ -25,7 +55,7 @@ function Tree(data) {
   this._root = node;
 }
 
-Tree.prototype.traverseDF = function(callback) {
+Tree.prototype.traverseDF = function (callback) {
   (function recurse(currentNode) {
     for (var i = 0, length = currentNode.children.length; i < length; i++) {
       recurse(currentNode.children[i]);
@@ -35,7 +65,7 @@ Tree.prototype.traverseDF = function(callback) {
   })(this._root);
 };
 
-Tree.prototype.traverseBF = function(callback) {
+Tree.prototype.traverseBF = function (callback) {
   var queue = new Queue();
 
   queue.enqueue(this._root);
@@ -52,14 +82,14 @@ Tree.prototype.traverseBF = function(callback) {
   }
 };
 
-Tree.prototype.contains = function(callback, traversal) {
+Tree.prototype.contains = function (callback, traversal) {
   traversal.call(this, callback);
 };
 
-Tree.prototype.add = function(data, toData, traversal) {
+Tree.prototype.append = function (data, toData, traversal) {
   var child = new Node2(data),
     parent = null;
-  var callback = function(node) {
+  var callback = function (node) {
     if (node.data === toData) {
       parent = node;
     }
@@ -75,34 +105,8 @@ Tree.prototype.add = function(data, toData, traversal) {
   }
 };
 
-class NodeDoublyLinkedList {
-  constructor(data) {
-    this.data = data;
-    this.left = null;
-    this.right = null;
-    this.args = [];
-  }
-}
 
-class DoublyLinkedList {
-  constructor() {
-    this.left = null;
-    this.right = null;
-  }
-
-  append(_item) {
-    var node = new NodeDoublyLinkedList(_item);
-    if (!this.left) {
-      this.left = node;
-      this.right = node;
-    } else {
-      node.right = this.right;
-      this.right.left = node;
-      this.right = node;
-    }
-  }
-}
-
+/* LINKED LIST */
 
 function NodeLinkedList(_data) {
   this.data = _data;
@@ -114,7 +118,7 @@ function LinkedList() {
   this.head = null;
 }
 
-LinkedList.prototype.append = function(_item) {
+LinkedList.prototype.append = function (_item) {
   var node = new NodeLinkedList(_item);
 
   if (!this.head) {
@@ -133,11 +137,11 @@ LinkedList.prototype.append = function(_item) {
   return node;
 };
 
-LinkedList.prototype.getSize = function() {
+LinkedList.prototype.getSize = function () {
   return this._length;
 };
 
-LinkedList.prototype.removeHead = function() {
+LinkedList.prototype.removeHead = function () {
   if (!this.head) {
     return;
   }
@@ -147,7 +151,7 @@ LinkedList.prototype.removeHead = function() {
   return this.head;
 };
 
-LinkedList.prototype.remove = function(_item) {
+LinkedList.prototype.remove = function (_item) {
   var currentNode = this.head;
   while (currentNode.next) {
     if (currentNode == _item) {
@@ -159,3 +163,33 @@ LinkedList.prototype.remove = function(_item) {
     }
   }
 };
+
+/* DOUBLE LINKED LIST */
+function NodeDoublyLinkedList(_data) {
+  this.data = _data;
+  this.next = null;
+}
+
+function DoublyLinkedList() {
+  this.left = null;
+  this.right = null;
+  this._length = 0;
+}
+
+DoublyLinkedList.prototype.append = function (_item) {
+  var node = new NodeDoublyLinkedList(_item)
+
+  if (!this.left) {
+    this.left = node;
+    this.right = node;
+  }
+  else {
+    node.right = this.right;
+    this.right.left = node;
+    this.right = node;
+  }
+
+  this._length += 1;
+  return node
+
+}
